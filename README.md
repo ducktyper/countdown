@@ -1,5 +1,5 @@
-# Define Class
-## class with no argument
+## Define Class
+### class with no argument
 ```ruby
 class Item
   def initialize()
@@ -7,7 +7,7 @@ class Item
 end
 ```
 
-## create with 1 argument
+### create with 1 argument
 ```ruby
 class Item
   def initialize(name)
@@ -15,18 +15,18 @@ class Item
 end
 ```
 
-# Create object
+## Create object
 ```ruby
 item1 = Item.new()
 item2 = Item.new("apple")
 ```
 
-# Include other file
+## Include other file
 ```ruby
 require "./item" # read file item.rb under the current folder and insert it
 ```
 
-# instance variable (start with @)
+## instance variable (start with @)
 ```ruby
 class Item
   def initialize(name)
@@ -39,8 +39,8 @@ end
 Item.new("apple").print() #=> "apple"
 ```
 
-# instance method
-## declear method
+## instance method
+### declear method
 ```ruby
 class Item
   def initialize()
@@ -51,13 +51,13 @@ class Item
 end
 ```
 
-## call method
+### call method
 ```ruby
 price = Item.new().price(5) #=> 50
 ```
 
-# Condition
-## if statement
+## Condition
+### if statement
 ```ruby
 if (1 == 1)
   puts "case1"
@@ -68,7 +68,7 @@ else
 end
 ```
 
-## switch statement
+### switch statement
 ```ruby
 case 1
 when 1
@@ -78,49 +78,49 @@ when 2
 end
 ```
 
-# String
-## create string
+## String
+### create string
 ```ruby
 name = "apple"
 ```
 
-## append string
+### append string
 ```ruby
 name = "apple"
 puts name + "orange" #=> apple orange
 ```
 
-## combine strings
+### combine strings
 ```ruby
 name = "apple"
 puts "having #{name}" #=> having apple
 ```
 
-# Array
-## create empty array
+## Array
+### create empty array
 ```ruby
 array = []
 ```
 
-## add item to array
+### add item to array
 ```ruby
 array = []
 array << "mlik"
 ```
 
-## get item by index
+### get item by index
 ```ruby
 array = ["apple", "orange"]
 array[0] #=> "apple"
 ```
 
-## find index of item
+### find index of item
 ```ruby
 array = ["apple", "orange"]
 array.index("apple") #=> 0
 ```
 
-## loop through each item
+### loop through each item
 ```ruby
 array = ["apple", "orange"]
 array.each do |item|
@@ -129,7 +129,7 @@ end #=> "apple\norange"
 array.each { |item| puts item } # same as above
 ```
 
-## map to create a new array with different value
+### map to create a new array with different value
 ```ruby
 array = [1,2,3]
 array.map do |item|
@@ -137,9 +137,9 @@ array.map do |item|
 end #=> [3,6,9]
 ```
 
-# Minitest
-## file name ends with "_test.rb"
-## basic format
+## Minitest
+### file name ends with "_test.rb"
+### basic format
 ```ruby
 require 'minitest/autorun'
 describe "math" do            # 'describe' block wraps 'it' blocks
@@ -149,7 +149,7 @@ describe "math" do            # 'describe' block wraps 'it' blocks
 end
 ```
 
-## assetion
+### assetion
 ```ruby
 expected = true
 actual = (1 + 1 == 2)
