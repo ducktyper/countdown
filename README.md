@@ -1,5 +1,6 @@
 ## Coding practice
 Goal: Teaching ruby to newbies
+
 We will build a self-checkout machine used in a supermarket together.
 
 Here is basic ruby syntax useful to this task.
