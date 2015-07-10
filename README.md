@@ -6,19 +6,19 @@ We will build a self-checkout machine used in a supermarket together.
 ### Task 1
 #### Requirements
 
-User can add item to store
+User can add an item to store
 ```ruby
 store.add_item("0001", "apple", 10) # add $10 apple with barcode 0001
 ```
-User count number of items
+User can count stored items
 ```ruby
 store.item_count() #=> 10 (10 items)
 ```
-Calculate total cost of given items
+User can calculate total cost of given items
 ```ruby
 store.calculate_cost(["0001", "0001"]) #=> 20 (two apples costs $2)
 ```
-print receipt of given items
+User can print receipt of given items
 ```ruby
 store.print_receipt(["0001", "0001"]) #=>
 apple $10
