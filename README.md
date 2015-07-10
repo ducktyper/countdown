@@ -3,6 +3,35 @@ Goal: Teaching ruby to newbies
 
 We will build a self-checkout machine used in a supermarket together.
 
+### Task 1
+#### Requirements
+
+User can add item to store
+```ruby
+store.add_item("0001", "apple", 10) # add $10 apple with barcode 0001
+```
+User count number of items
+```ruby
+store.item_count() #=> 10 (10 items)
+```
+Calculate total cost of given items
+```ruby
+store.calculate_cost(["0001", "0001"]) #=> 20 (two apples costs $2)
+```
+print receipt of given items
+```ruby
+store.print_receipt(["0001", "0001"]) #=>
+apple $10
+apple $10
+total $20
+```
+
+#### TODO
+As a tester, remove store_test.rb and recreate it from store.rb
+As a developer, remove store.rb and recreate it to pass store_test.rb
+As a passinated person, remove store_test.rb and store.rb and create them using TDD
+
+
 Here is basic ruby syntax useful to this task.
 
 ## Define Class
@@ -156,7 +185,7 @@ describe "math" do            # 'describe' block wraps 'it' blocks
 end
 ```
 
-### assetion
+### assertion
 ```ruby
 expected = true
 actual = (1 + 1 == 2)
