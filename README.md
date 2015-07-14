@@ -40,7 +40,7 @@ total $20
 2. Install Rubymine from https://www.jetbrains.com/ruby/ (Not free but students can get 1 year license)
 3. Clone this project
   * Run Rubymine
-  * "check out from Version Control" -> "Git" from Welcome page
+  * Welcome page -> check out from Version Control -> Git
   * Fill Repository info and click clone
     * Git Repository URL "https://github.com/ducktyper/countdown.git"
     * Parent Directory   "choose where you want to save this project in your computer"
