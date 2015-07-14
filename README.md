@@ -24,7 +24,7 @@ store.item_count() #=> 10 (10 items)
 ```
 User can calculate total cost of given items
 ```ruby
-store.calculate_cost(["0001", "0001"]) #=> 20 (two apples costs $2)
+store.calculate_cost(["0001", "0001"]) #=> 20 (two apples costs $20)
 ```
 User can print receipt of given items
 ```ruby
@@ -34,10 +34,41 @@ apple $10
 total $20
 ```
 
+### Setup environment
+#### Using Windows + Rubymine (not free)
+Install railsinstaller from http://railsinstaller.org/en (WINDOWS RUBY 2.1)
+
+Install Rubymine from https://www.jetbrains.com/ruby/ (Not free but students can get 1 year license)
+
+Clone this project
+1. Run Rubymine
+2. "check out from Version Control" -> "Git" from Welcome page
+3. Fill Repository info and click clone
+  - Git Repository URL "https://github.com/ducktyper/countdown.git"
+  - Parent Directory   "choose where you want to save this project in your computer"
+  - Directory Name     "countdown"
+
+Run test
+- toolbar -> click 'run' -> click 'Run' -> choose 1. All tests in countdown
+
+Open cloned folder from Rubymine
+
+#### Using Windows + Sublime Text (free)
+Install railsinstaller from http://railsinstaller.org/en (WINDOWS RUBY 2.1)
+
+Install Sublime Text from https://http://www.sublimetext.com
+
+Clone this project
+
+Open cloned folder from Sublime Text
+
+Open score_test.rb file and click Ctrl-b to run test
+
+
 Here is basic ruby syntax useful to this task.
 
-## Define Class
-### class with no argument
+### Define Class
+#### class with no argument
 ```ruby
 class Item
   def initialize()
@@ -45,7 +76,7 @@ class Item
 end
 ```
 
-### create with 1 argument
+#### create with 1 argument
 ```ruby
 class Item
   def initialize(name)
@@ -53,18 +84,18 @@ class Item
 end
 ```
 
-## Create object
+### Create object
 ```ruby
 item1 = Item.new()
 item2 = Item.new("apple")
 ```
 
-## Include other file
+### Include other file
 ```ruby
 require "./item" # read file item.rb under the current folder and insert it
 ```
 
-## instance variable (start with @)
+### instance variable (start with @)
 ```ruby
 class Item
   def initialize(name)
@@ -77,8 +108,8 @@ end
 Item.new("apple").print() #=> "apple"
 ```
 
-## instance method
-### declear method
+### instance method
+#### declear method
 ```ruby
 class Item
   def initialize()
@@ -89,13 +120,13 @@ class Item
 end
 ```
 
-### call method
+#### call method
 ```ruby
 price = Item.new().price(5) #=> 50
 ```
 
-## Condition
-### if statement
+### Condition
+#### if statement
 ```ruby
 if (1 == 1)
   puts "case1"
@@ -106,7 +137,7 @@ else
 end
 ```
 
-### switch statement
+#### switch statement
 ```ruby
 case 1
 when 1
@@ -116,49 +147,49 @@ when 2
 end
 ```
 
-## String
-### create string
+### String
+#### create string
 ```ruby
 name = "apple"
 ```
 
-### append string
+#### append string
 ```ruby
 name = "apple"
 puts name + "orange" #=> apple orange
 ```
 
-### combine strings
+#### combine strings
 ```ruby
 name = "apple"
 puts "having #{name}" #=> having apple
 ```
 
-## Array
-### create empty array
+### Array
+#### create empty array
 ```ruby
 array = []
 ```
 
-### add item to array
+#### add item to array
 ```ruby
 array = []
 array << "mlik"
 ```
 
-### get item by index
+#### get item by index
 ```ruby
 array = ["apple", "orange"]
 array[0] #=> "apple"
 ```
 
-### find index of item
+#### find index of item
 ```ruby
 array = ["apple", "orange"]
 array.index("apple") #=> 0
 ```
 
-### loop through each item
+#### loop through each item
 ```ruby
 array = ["apple", "orange"]
 array.each do |item|
@@ -167,7 +198,7 @@ end #=> "apple\norange"
 array.each { |item| puts item } # same as above
 ```
 
-### map to create a new array with different value
+#### map to create a new array with different value
 ```ruby
 array = [1,2,3]
 array.map do |item|
@@ -175,9 +206,9 @@ array.map do |item|
 end #=> [3,6,9]
 ```
 
-## Minitest
-### file name ends with "_test.rb"
-### basic format
+### Minitest
+#### file name ends with "_test.rb"
+#### basic format
 ```ruby
 require 'minitest/autorun'
 describe "math" do            # 'describe' block wraps 'it' blocks
@@ -187,7 +218,7 @@ describe "math" do            # 'describe' block wraps 'it' blocks
 end
 ```
 
-### assertion
+#### assertion
 ```ruby
 expected = true
 actual = (1 + 1 == 2)
