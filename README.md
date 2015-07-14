@@ -52,6 +52,9 @@ total $20
 1. Install railsinstaller from http://railsinstaller.org/en (WINDOWS RUBY 2.1)
 2. Install Sublime Text from https://http://www.sublimetext.com
 3. Clone this project
+  * Open Terminal
+  * Move to where you want to clone the project (Example: C:\Users\daniel\Desktop\projects)
+  * git clone https://github.com/ducktyper/countdown.git
 4. Open cloned folder from Sublime Text
 5. Open score_test.rb file and click Ctrl-b to run test
 
