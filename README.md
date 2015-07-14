@@ -36,33 +36,24 @@ total $20
 
 ### Setup environment
 #### Using Windows + Rubymine (not free)
-Install railsinstaller from http://railsinstaller.org/en (WINDOWS RUBY 2.1)
-
-Install Rubymine from https://www.jetbrains.com/ruby/ (Not free but students can get 1 year license)
-
-Clone this project
-1. Run Rubymine
-2. "check out from Version Control" -> "Git" from Welcome page
-3. Fill Repository info and click clone
-  - Git Repository URL "https://github.com/ducktyper/countdown.git"
-  - Parent Directory   "choose where you want to save this project in your computer"
-  - Directory Name     "countdown"
-
-Run test
-- toolbar -> click 'run' -> click 'Run' -> choose 1. All tests in countdown
-
-Open cloned folder from Rubymine
+1. Install railsinstaller from http://railsinstaller.org/en (WINDOWS RUBY 2.1)
+2. Install Rubymine from https://www.jetbrains.com/ruby/ (Not free but students can get 1 year license)
+3. Clone this project
+  * Run Rubymine
+  * "check out from Version Control" -> "Git" from Welcome page
+  * Fill Repository info and click clone
+    * Git Repository URL "https://github.com/ducktyper/countdown.git"
+    * Parent Directory   "choose where you want to save this project in your computer"
+    * Directory Name     "countdown"
+4. Run test
+  * toolbar -> click 'run' -> click 'Run' -> choose 1. All tests in countdown
 
 #### Using Windows + Sublime Text (free)
-Install railsinstaller from http://railsinstaller.org/en (WINDOWS RUBY 2.1)
-
-Install Sublime Text from https://http://www.sublimetext.com
-
-Clone this project
-
-Open cloned folder from Sublime Text
-
-Open score_test.rb file and click Ctrl-b to run test
+1. Install railsinstaller from http://railsinstaller.org/en (WINDOWS RUBY 2.1)
+2. Install Sublime Text from https://http://www.sublimetext.com
+3. Clone this project
+4. Open cloned folder from Sublime Text
+5. Open score_test.rb file and click Ctrl-b to run test
 
 
 Here is basic ruby syntax useful to this task.
