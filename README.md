@@ -10,7 +10,7 @@ As a tester, remove store_test.rb and recreate it from store.rb
 
 As a developer, remove store.rb and recreate it to pass store_test.rb
 
-As a passinated person, remove store_test.rb and store.rb and create them using TDD
+As a passinate person, remove store_test.rb and store.rb and create them using TDD
 
 #### Requirements
 
