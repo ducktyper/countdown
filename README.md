@@ -227,6 +227,7 @@ hash["key"] #=> "value"
 
 ### Symbol
 [More info](http://ruby-doc.org/core-2.1.0/Symbol.html)
+
 Symbol is like string but faster to compare equality.
 It is popular using Symbol as key in Hash.
 
