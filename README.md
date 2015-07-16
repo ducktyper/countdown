@@ -62,6 +62,7 @@ total $20
 Here is basic ruby syntax useful to this task.
 
 ### Define Class
+[More info](http://ruby-doc.org/core-2.1.0/Class.html)
 #### class with no argument
 ```ruby
 class Item
@@ -103,6 +104,7 @@ Item.new("apple").print() #=> "apple"
 ```
 
 ### instance method
+[More info](http://ruby-doc.org/core-2.1.0/Class.html)
 #### declear method
 ```ruby
 class Item
@@ -142,6 +144,7 @@ end
 ```
 
 ### String
+[More info](http://ruby-doc.org/core-2.1.0/String.html)
 #### create string
 ```ruby
 name = "apple"
@@ -160,6 +163,7 @@ puts "having #{name}" #=> having apple
 ```
 
 ### Array
+[More info](http://ruby-doc.org/core-2.1.0/Array.html)
 #### create empty array
 ```ruby
 array = []
@@ -198,6 +202,54 @@ array = [1,2,3]
 array.map do |item|
   item * 3
 end #=> [3,6,9]
+```
+
+### Hash
+[More info](http://ruby-doc.org/core-2.1.0/Hash.html)
+A Hash is a dictionary-like collection of unique keys and their values.
+Same as 'Dictionary' in C#, 'Object Properties' in Javascript.
+
+#### create empty hash
+```ruby
+hash = {}
+```
+
+#### add key and value pair
+```ruby
+hash = {}
+hash["key"] = "value"
+```
+
+#### get value from key
+```ruby
+hash = {"key" => "value"}
+hash["key"] #=> "value"
+```
+
+### Symbol
+[More info](http://ruby-doc.org/core-2.1.0/Symbol.html)
+Symbol is like string but faster to compare equality.
+It is popular using Symbol as key in Hash.
+
+#### Use Symbol in Hash
+```ruby
+hash = {:name => "apple", :price => 10}
+```
+
+#### Short syntax using Symbol in Hash
+```ruby
+hash = {name: "apple", price: 10}
+```
+
+### Methods for array like classes
+[More info](http://ruby-doc.org/core-2.1.0/Enumerable.html)
+
+#### Inject to compose data
+```ruby
+# update 0 5 times (0 -> 1 -> 3 -> 6 -> 10 -> 15) and return
+[1, 2, 3, 4, 5].inject(0) do |total, number|
+  total + number
+end #=> 15
 ```
 
 ### Minitest

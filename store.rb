@@ -1,42 +1,48 @@
+class Product
+  attr_reader :barcode, :name, :cost
+
+  def initialize(barcode, name, cost)
+    @barcode = barcode
+    @name    = name
+    @cost    = cost
+  end
+
+end
+
 class Store
 
   def initialize()
-    @barcodes = []
-    @names    = []
-    @prices   = []
+    @products = {}
   end
 
-  def add_item(barcode, name, price)
-    @barcodes << barcode
-    @names    << name
-    @prices   << price
+  def add_product(barcode, name, cost)
+    @products[barcode] = Product.new(barcode, name, cost)
   end
 
-  def item_count()
-    @names.count
+  def product_count()
+    @products.size
   end
 
   def calculate_cost(barcodes)
-    total = 0
-    barcodes.each do |barcode|
-      index = @barcodes.index(barcode)
-      total = total + @prices[index]
+    barcodes.inject(0) do |total_cost, barcode|
+      total_cost + @products[barcode].cost
     end
-    total
   end
 
   def print_receipt(barcodes)
-    display = ""
-    total   = 0
-    barcodes.each do |barcode|
-      index   = @barcodes.index(barcode)
-      name    = @names[index]
-      price   = @prices[index]
-      display = display + "#{name} $#{price}\n"
-      total   = total + price
+    print_each_with_cost(barcodes) + print_total_cost(barcodes)
+  end
+
+  private
+  def print_each_with_cost(barcodes)
+    barcodes.inject("") do |receipt, barcode|
+      product = @products[barcode]
+      receipt + "#{product.name} $#{product.cost}\n"
     end
-    display = display + "total $#{total}"
-    display
+  end
+
+  def print_total_cost(barcodes)
+    "total $#{calculate_cost(barcodes)}"
   end
 
 end
