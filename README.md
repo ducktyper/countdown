@@ -205,6 +205,7 @@ end #=> [3,6,9]
 
 ### Hash
 [More info](http://ruby-doc.org/core-2.1.0/Hash.html)
+
 A Hash is a dictionary-like collection of unique keys and their values.
 Same as 'Dictionary' in C#, 'Object Properties' in Javascript.
 
