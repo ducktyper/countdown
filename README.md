@@ -82,8 +82,8 @@ apple $10
 total $20
 ```
 
-### Setup environment
-#### Using Windows + Rubymine (not free)
+#### Setup environment
+##### Using Windows + Rubymine (not free)
 1. Install railsinstaller from http://railsinstaller.org/en (WINDOWS RUBY 2.1)
 2. Install Rubymine from https://www.jetbrains.com/ruby/ (Not free but students can get 1 year license)
 3. Clone this project
@@ -96,7 +96,7 @@ total $20
 4. Run test
   * toolbar -> click 'run' -> click 'Run' -> choose 1. All tests in countdown
 
-#### Using Windows + Sublime Text (free)
+##### Using Windows + Sublime Text (free)
 1. Install railsinstaller from http://railsinstaller.org/en (WINDOWS RUBY 2.1)
 2. Install Sublime Text from https://http://www.sublimetext.com
 3. Clone this project
@@ -109,9 +109,10 @@ total $20
 
 Here is basic ruby syntax useful to this task.
 
-### Define Class
+#### Ruby Syntax
+##### Define Class
 [More info](http://ruby-doc.org/core-2.1.0/Class.html)
-#### class with no argument
+###### class with no argument
 ```ruby
 class Item
   def initialize()
@@ -119,7 +120,7 @@ class Item
 end
 ```
 
-#### create with 1 argument
+###### create with 1 argument
 ```ruby
 class Item
   def initialize(name)
@@ -127,18 +128,18 @@ class Item
 end
 ```
 
-### Create object
+###### Create object
 ```ruby
 item1 = Item.new()
 item2 = Item.new("apple")
 ```
 
-### Include other file
+###### Include other file
 ```ruby
 require "./item" # read file item.rb under the current folder and insert it
 ```
 
-### instance variable (start with @)
+###### instance variable (start with @)
 ```ruby
 class Item
   def initialize(name)
@@ -151,8 +152,8 @@ end
 Item.new("apple").print() #=> "apple"
 ```
 
-### instance method
-#### declear method
+###### instance method
+* declear method
 ```ruby
 class Item
   def initialize()
@@ -163,13 +164,13 @@ class Item
 end
 ```
 
-#### call method
+* call method
 ```ruby
 price = Item.new().price(5) #=> 50
 ```
 
-### Condition
-#### if statement
+###### Condition
+* if statement
 ```ruby
 if (1 == 1)
   puts "case1"
@@ -180,7 +181,7 @@ else
 end
 ```
 
-#### switch statement
+* switch statement
 ```ruby
 case 1
 when 1
@@ -190,51 +191,51 @@ when 2
 end
 ```
 
-### String
+###### String
 [More info](http://ruby-doc.org/core-2.1.0/String.html)
-#### create string
+* create string
 ```ruby
 name = "apple"
 ```
 
-#### append string
+* append string
 ```ruby
 name = "apple"
 puts name + "orange" #=> apple orange
 ```
 
-#### combine strings
+* combine strings
 ```ruby
 name = "apple"
 puts "having #{name}" #=> having apple
 ```
 
-### Array
+##### Array
 [More info](http://ruby-doc.org/core-2.1.0/Array.html)
-#### create empty array
+* create empty array
 ```ruby
 array = []
 ```
 
-#### add item to array
+* add item to array
 ```ruby
 array = []
 array << "mlik"
 ```
 
-#### get item by index
+* get item by index
 ```ruby
 array = ["apple", "orange"]
 array[0] #=> "apple"
 ```
 
-#### find index of item
+* find index of item
 ```ruby
 array = ["apple", "orange"]
 array.index("apple") #=> 0
 ```
 
-#### loop through each item
+* loop through each item
 ```ruby
 array = ["apple", "orange"]
 array.each do |item|
@@ -243,7 +244,7 @@ end #=> "apple\norange"
 array.each { |item| puts item } # same as above
 ```
 
-#### map to create a new array with different value
+* map to create a new array with different value
 ```ruby
 array = [1,2,3]
 array.map do |item|
@@ -251,49 +252,49 @@ array.map do |item|
 end #=> [3,6,9]
 ```
 
-### Hash
+##### Hash
 [More info](http://ruby-doc.org/core-2.1.0/Hash.html)
 
 A Hash is a dictionary-like collection of unique keys and their values.
 Same as 'Dictionary' in C#, 'Object Properties' in Javascript.
 
-#### create empty hash
+* create empty hash
 ```ruby
 hash = {}
 ```
 
-#### add key and value pair
+* add key and value pair
 ```ruby
 hash = {}
 hash["key"] = "value"
 ```
 
-#### get value from key
+* get value from key
 ```ruby
 hash = {"key" => "value"}
 hash["key"] #=> "value"
 ```
 
-### Symbol
+##### Symbol
 [More info](http://ruby-doc.org/core-2.1.0/Symbol.html)
 
 Symbol is like string but faster to compare equality.
 It is popular using Symbol as key in Hash.
 
-#### Use Symbol in Hash
+* Use Symbol in Hash
 ```ruby
 hash = {:name => "apple", :price => 10}
 ```
 
-#### Short syntax using Symbol in Hash
+* Short syntax using Symbol in Hash
 ```ruby
 hash = {name: "apple", price: 10}
 ```
 
-### Methods for array like classes
+##### Methods for array like classes
 [More info](http://ruby-doc.org/core-2.1.0/Enumerable.html)
 
-#### Inject to compose data
+* Inject to compose data
 ```ruby
 # update 0 5 times (0 -> 1 -> 3 -> 6 -> 10 -> 15) and return
 [1, 2, 3, 4, 5].inject(0) do |total, number|
@@ -301,9 +302,10 @@ hash = {name: "apple", price: 10}
 end #=> 15
 ```
 
-### Minitest
-#### file name ends with "_test.rb"
-#### basic format
+##### Minitest
+file name ends with "_test.rb"
+
+* basic format
 ```ruby
 require 'minitest/autorun'
 describe "math" do            # 'describe' block wraps 'it' blocks
@@ -313,7 +315,7 @@ describe "math" do            # 'describe' block wraps 'it' blocks
 end
 ```
 
-#### assertion
+* assertion
 ```ruby
 expected = true
 actual = (1 + 1 == 2)
