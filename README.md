@@ -3,6 +3,54 @@ Goal: Teaching ruby to newbies
 
 We will build a self-checkout machine used in a supermarket together.
 
+### Task 2
+
+#### TODO
+Implement new requirements to store.rb and store_test.rb. Reading Ruby syntax will be useful to do this task.
+#### Requirements
+1. Receipts show costs including cents (example: apple $10.00)
+
+2. Customers can purchase products which returns the receipt
+```ruby
+store.purchase(["0001", "0002"]) #=>
+apple $10.00
+apple $10.00
+total $20.00
+```
+3. Owner can view purchase summary as data array
+```ruby
+store.purchase_summary() #=>
+[
+  ["Time","Number of Products","Cost"],
+  ["17/07/2015",2,20.0],
+  ["18/07/2015",1,15.99]
+]
+```
+3. Owner can add discount to a product
+```ruby
+store.add_discount("0001", 1) #=> $1 dicount to product "0001"
+```
+4. Owner can delete discount to a product
+```ruby
+store.delete_discount("0001") #=> delete dicount to product "0001"
+```
+
+#### Ruby syntax
+##### format string
+[More info](http://ruby-doc.org/core-2.1.0/String.html)
+```ruby
+"display float %.1f" % 1 #=> display float 1.0
+```
+
+##### Time
+[More info](http://ruby-doc.org/core-2.1.0/Time.html)
+```ruby
+Time.now            #=> 2015-07-19 20:32:52 +1200
+Time.new(2015,7,19) #=> 2015-07-19 00:00:00 +1200
+Time.new(2015,7,19).strftime("%Y-%m-%d") #=> "2015-07-19"
+```
+
+
 ### Task 1
 
 #### TODO
