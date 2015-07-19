@@ -28,11 +28,11 @@ store.purchase_summary() #=>
 ```
 3. Owner can add discount to a product
 ```ruby
-store.add_discount("0001", 1) #=> $1 dicount to product "0001"
+store.add_discount("0001", 1) #=> $1 discount to product "0001"
 ```
 4. Owner can delete discount to a product
 ```ruby
-store.delete_discount("0001") #=> delete dicount to product "0001"
+store.delete_discount("0001") #=> delete discount to product "0001"
 ```
 
 #### Ruby syntax
