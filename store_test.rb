@@ -3,6 +3,13 @@ require 'active_record'
 require './store'
 
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
+ActiveRecord::Schema.define do
+  create_table "products" do |t|
+    t.string   "barcode",       limit: 255
+    t.string   "name",          limit: 255
+    t.integer  "cost_in_cents", limit: 4
+  end
+end
 
 describe "store" do
   let(:store) do
