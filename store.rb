@@ -80,7 +80,6 @@ class Store
   end
 
   def print_receipt barcodes
-    print_cost(barcodes) + print_discount(barcodes) + print_total(barcodes)
     products_from(barcodes).map(&:print).join +
     discounts_from(barcodes).map(&:print).join +
     "total $#{"%.2f" % calculate_cost(barcodes)}"
@@ -102,18 +101,6 @@ class Store
   end
 
   private
-  def print_cost barcodes
-    products_from(barcodes).map(&:print).join
-  end
-
-  def print_discount barcodes
-    discounts_from(barcodes).map(&:print).join
-  end
-
-  def print_total barcodes
-    "total $#{"%.2f" % calculate_cost(barcodes)}"
-  end
-
   def products_from barcodes
     barcodes.map {|b| product_from b}
   end
