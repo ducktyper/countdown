@@ -59,4 +59,10 @@ describe "store" do
     assert_equal expect, store.purchase(["0001"])
   end
 
+  it "add discount override existing one" do
+    store.add_discount("0001", 1)
+    store.add_discount("0001", 2)
+    assert_equal 3, store.calculate_cost(["0001"])
+  end
+
 end
