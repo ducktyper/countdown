@@ -104,6 +104,10 @@ class Store
     @discounts[barcode] = Discount.new(product_from(barcode), amount)
   end
 
+  def delete_discount barcode
+    @discounts.delete barcode
+  end
+
   private
   def products_from barcodes
     barcodes.map {|b| product_from b}

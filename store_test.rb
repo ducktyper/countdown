@@ -65,4 +65,10 @@ describe "store" do
     assert_equal 3, store.calculate_cost(["0001"])
   end
 
+  it "deletes discount" do
+    store.add_discount("0001", 1)
+    store.delete_discount("0001")
+    assert_equal 5, store.calculate_cost(["0001"])
+  end
+
 end
