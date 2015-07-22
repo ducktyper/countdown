@@ -36,8 +36,8 @@ describe "store" do
     store = Store.new()
     store.add_product("0001", "apple", 5)
     store.add_product("0002", "orange", 10)
-    store.add_product("0001", "orange", 10)
-    expect = "orange $10\ntotal $10"
+    store.add_product("0001", "jazz apple", 10)
+    expect = "jazz apple $10\ntotal $10"
     assert_equal(expect, store.print_receipt(["0001"]))
   end
 
