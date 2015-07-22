@@ -31,8 +31,8 @@ class Purchase
   end
 
   def cost
-    products.inject(0) { |total, product| total + product.cost } -
-    discounts.inject(0) { |total, discount| total + discount.amount}
+    products.map {|p| p.cost}.reduce(:+) -
+    discounts.map {|p| p.amount}.reduce(:+)
   end
 
 end
