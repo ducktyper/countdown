@@ -24,12 +24,12 @@ describe "store" do
 
   it "adds duplicated barcode replace properties" do
     store.add_product("0001", "jazz apple", 10)
-    expect = "jazz apple $10\ntotal $10"
+    expect = "jazz apple $10.00\ntotal $10.00"
     assert_equal expect, store.print_receipt(["0001"])
   end
 
   it "prints receipt" do
-    expect = "apple $5\ntotal $5"
+    expect = "apple $5.00\ntotal $5.00"
     assert_equal expect, store.print_receipt(["0001"])
   end
 
