@@ -5,18 +5,15 @@ require './discount'
 class Store
 
   def initialize
-    @products = {}
     @purchases = []
     @discounts = Hash.new(NoDiscount.new)
   end
 
   def add_product barcode, name, cost
     Product.create_or_update(barcode: barcode, name: name, cost: cost)
-    @products[barcode] = Product.new(barcode: barcode, name: name, cost: cost)
   end
 
   def product_count
-    @products.size
     Product.count
   end
 
@@ -54,7 +51,6 @@ class Store
   end
 
   def product_from barcode
-    @products[barcode]
     Product.find_by barcode: barcode
   end
 
