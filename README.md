@@ -34,7 +34,7 @@ store.add_discount("0001", 1) #=> $1 discount to product "0001"
 ```ruby
 store.delete_discount("0001") #=> delete discount to product "0001"
 ```
-* Extra Task: Save products, purchases, discounts to SQL database using ActiveRecord with Sqlite.
+* Extra Task: Save products, purchases, discounts to SQL database using ActiveRecord with SQLite.
 ActiveRecord is M in MVC from Ruby on Rails framework. We will go through how to use this library
 in next class
 
