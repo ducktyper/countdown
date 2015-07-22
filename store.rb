@@ -31,6 +31,10 @@ class Store
     print_cost(barcodes) + print_total(barcodes)
   end
 
+  def purchase barcodes
+    print_receipt(barcodes)
+  end
+
   private
   def print_cost barcodes
     barcodes.inject("") do |receipt, barcode|

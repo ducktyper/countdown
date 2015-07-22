@@ -33,4 +33,9 @@ describe "store" do
     assert_equal expect, store.print_receipt(["0001"])
   end
 
+  it "purchases products" do
+    expect = "apple $5.00\ntotal $5.00"
+    assert_equal expect, store.purchase(["0001"])
+  end
+
 end
