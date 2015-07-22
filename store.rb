@@ -102,11 +102,6 @@ class Store
     barcodes.inject("") do |receipt, barcode|
       product  = @products[barcode]
       discount = @discounts[barcode]
-      if !discount.is_a? NoDiscount
-        receipt + "#{product.name} -$#{"%.2f" % discount.amount}\n"
-      else
-        receipt
-      end
       receipt + discount.print(product)
     end
   end
