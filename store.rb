@@ -31,8 +31,7 @@ class Purchase
   end
 
   def cost
-    products.map(&:cost).reduce(:+) -
-    discounts.map(&:amount).reduce(:+)
+    products.map(&:cost).reduce(:+) - discounts.map(&:amount).reduce(:+)
   end
 
 end
