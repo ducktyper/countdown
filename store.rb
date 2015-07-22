@@ -28,18 +28,18 @@ class Store
   end
 
   def print_receipt barcodes
-    print_each_with_cost(barcodes) + print_total_cost(barcodes)
+    print_cost(barcodes) + print_total(barcodes)
   end
 
   private
-  def print_each_with_cost barcodes
+  def print_cost barcodes
     barcodes.inject("") do |receipt, barcode|
       product = @products[barcode]
       receipt + "#{product.name} $#{product.cost}\n"
     end
   end
 
-  def print_total_cost barcodes
+  def print_total barcodes
     "total $#{calculate_cost(barcodes)}"
   end
 
