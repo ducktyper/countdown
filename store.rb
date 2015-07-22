@@ -34,6 +34,11 @@ class Purchase
     products.map(&:cost).reduce(:+) - discounts.map(&:amount).reduce(:+)
   end
 
+  def print_receipt
+    @products.map(&:print).join + @discounts.map(&:print).join +
+    "total $#{"%.2f" % cost}"
+  end
+
 end
 
 class Discount
@@ -88,6 +93,7 @@ class Store
   def purchase barcodes
     @purchases << Purchase.new(products_from(barcodes), discounts_from(barcodes))
     print_receipt(barcodes)
+    @purchases.last.print_receipt
   end
 
   def purchase_summary
