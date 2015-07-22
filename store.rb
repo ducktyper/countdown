@@ -38,12 +38,18 @@ class Discount
 
 end
 
+class NoDiscount
+  def amount
+    0
+  end
+end
+
 class Store
 
   def initialize
     @products = {}
     @purchases = []
-    @discounts = {}
+    @discounts = Hash.new(NoDiscount.new)
   end
 
   def add_product barcode, name, cost
@@ -89,7 +95,7 @@ class Store
     barcodes.inject("") do |receipt, barcode|
       product  = @products[barcode]
       discount = @discounts[barcode]
-      if discount
+      if !discount.is_a? NoDiscount
         receipt + "#{product.name} -$#{"%.2f" % discount.amount}\n"
       else
         receipt
