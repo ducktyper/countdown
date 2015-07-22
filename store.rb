@@ -57,12 +57,8 @@ class Store
   end
 
   def purchase_summary
-    summary = [
-      ["Time","Number of Products","Cost"]
-    ]
-    @purchases.each do |p|
-      summary << [p.display_time, p.item_count, p.cost]
-    end
+    summary = [["Time","Number of Products","Cost"]]
+    @purchases.each {|p| summary << [p.display_time, p.item_count, p.cost]}
     summary
   end
 
