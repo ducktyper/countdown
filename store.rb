@@ -1,17 +1,4 @@
-class Product
-  attr_reader :barcode, :name, :cost
-
-  def initialize barcode, name, cost
-    @barcode = barcode
-    @name    = name
-    @cost    = cost
-  end
-
-  def print
-    "#{name} $#{"%.2f" % cost}\n"
-  end
-
-end
+require './product'
 
 class Purchase
   attr_reader :time, :products, :discounts
