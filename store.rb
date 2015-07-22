@@ -61,7 +61,7 @@ class Store
       ["Time","Number of Products","Cost"]
     ]
     @purchases.each do |p|
-      summary << [p.time.strftime("%d/%m/%Y"), p.barcodes.size, p.cost]
+      summary << [p.display_time, p.item_count, p.cost]
     end
     summary
   end
