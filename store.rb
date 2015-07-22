@@ -100,9 +100,7 @@ class Store
 
   def print_discount barcodes
     barcodes.inject("") do |receipt, barcode|
-      product  = @products[barcode]
-      discount = @discounts[barcode]
-      receipt + discount.print(product)
+      receipt + @discounts[barcode].print(@products[barcode])
     end
   end
 
