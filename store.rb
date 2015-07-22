@@ -72,7 +72,9 @@ class Store
   end
 
   def calculate_cost barcodes
-    barcodes.inject(0) {|total, barcode| total + @products[barcode].cost - @discounts[barcode].amount}
+    barcodes.inject(0) do |total, barcode|
+      total + @products[barcode].cost - @discounts[barcode].amount
+    end
   end
 
   def print_receipt barcodes
@@ -96,15 +98,11 @@ class Store
 
   private
   def print_cost barcodes
-    barcodes.inject("") do |receipt, barcode|
-      receipt + @products[barcode].print
-    end
+    barcodes.inject("") {|receipt, barcode| receipt + @products[barcode].print}
   end
 
   def print_discount barcodes
-    barcodes.inject("") do |receipt, barcode|
-      receipt + @discounts[barcode].print
-    end
+    barcodes.inject("") {|receipt, barcode| receipt + @discounts[barcode].print}
   end
 
   def print_total barcodes
