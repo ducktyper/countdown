@@ -38,7 +38,7 @@ describe "store" do
     assert_equal expect, store.purchase(["0001"])
   end
 
-  it "views purchase summary" do
+  it "shows purchase summary" do
     store.purchase(["0001"])
     time = Time.now.strftime("%d/%m/%Y")
     expect = [
@@ -48,18 +48,18 @@ describe "store" do
     assert_equal expect, store.purchase_summary
   end
 
-  it "add discount" do
+  it "adds discount" do
     store.add_discount("0001", 1)
     assert_equal 4, store.calculate_cost(["0001"])
   end
 
-  it "receipt includes discount" do
+  it "shows receipt with discount" do
     store.add_discount("0001", 1)
     expect = "apple $5.00\napple -$1.00\ntotal $4.00"
     assert_equal expect, store.purchase(["0001"])
   end
 
-  it "add discount override existing one" do
+  it "adds discount override existing one" do
     store.add_discount("0001", 1)
     store.add_discount("0001", 2)
     assert_equal 3, store.calculate_cost(["0001"])
