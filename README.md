@@ -8,14 +8,14 @@ We will build a self-checkout machine used in a supermarket together.
 #### TODO
 Implement new requirements to store.rb and store_test.rb. Reading Ruby syntax will be useful to do this task.
 #### Requirements
-* Receipts show costs including cents (example: apple $10.00)
+* Receipts show costs including cents (example: apple $5.00)
 
 * Customers can purchase products which returns the receipt
 ```ruby
 store.purchase(["0001", "0002"]) #=>
-apple $10.00
-apple $10.00
-total $20.00
+apple $5.00
+orange $10.00
+total $15.00
 ```
 * Owner can view purchase summary as data array
 ```ruby
