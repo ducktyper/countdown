@@ -38,4 +38,13 @@ describe "store" do
     assert_equal expect, store.purchase(["0001"])
   end
 
+  it "views purchase summary" do
+    store.purchase(["0001"])
+    expect = [
+      ["Time","Number of Products","Cost"],
+      ["17/07/2015",1,10]
+    ]
+    assert_equal expect, store.purchase_summary
+  end
+
 end

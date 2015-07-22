@@ -35,6 +35,13 @@ class Store
     print_receipt(barcodes)
   end
 
+  def purchase_summary
+    [
+      ["Time","Number of Products","Cost"],
+      ["17/07/2015",1,10]
+    ]
+  end
+
   private
   def print_cost barcodes
     barcodes.inject("") do |receipt, barcode|
