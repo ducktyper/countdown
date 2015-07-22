@@ -81,15 +81,15 @@ class Store
   end
 
   def calculate_cost barcodes
-    Purchase.new(products_from(barcodes), discounts_from(barcodes)).cost
+    purchase_from(barcodes).cost
   end
 
   def print_receipt barcodes
-    Purchase.new(products_from(barcodes), discounts_from(barcodes)).print_receipt
+    purchase_from(barcodes).print_receipt
   end
 
   def purchase barcodes
-    purchase = Purchase.new(products_from(barcodes), discounts_from(barcodes))
+    purchase = purchase_from barcodes
     @purchases << purchase
     purchase.print_receipt
   end
@@ -115,5 +115,9 @@ class Store
 
   def discounts_from barcodes
     barcodes.map {|d| @discounts[d]}
+  end
+
+  def purchase_from barcodes
+    Purchase.new(products_from(barcodes), discounts_from(barcodes))
   end
 end
