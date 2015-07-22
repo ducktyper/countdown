@@ -24,9 +24,7 @@ class Store
   end
 
   def calculate_cost(barcodes)
-    barcodes.inject(0) do |total, barcode|
-      total + @products[barcode].cost
-    end
+    barcodes.inject(0) {|total, barcode| total + @products[barcode].cost}
   end
 
   def print_receipt(barcodes)
