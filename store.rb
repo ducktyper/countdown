@@ -85,15 +85,13 @@ class Store
   end
 
   def print_receipt barcodes
-    products_from(barcodes).map(&:print).join +
-    discounts_from(barcodes).map(&:print).join +
-    "total $#{"%.2f" % calculate_cost(barcodes)}"
+    Purchase.new(products_from(barcodes), discounts_from(barcodes)).print_receipt
   end
 
   def purchase barcodes
-    @purchases << Purchase.new(products_from(barcodes), discounts_from(barcodes))
-    print_receipt(barcodes)
-    @purchases.last.print_receipt
+    purchase = Purchase.new(products_from(barcodes), discounts_from(barcodes))
+    @purchases << purchase
+    purchase.print_receipt
   end
 
   def purchase_summary
