@@ -33,7 +33,7 @@ class Store
   end
 
   def purchase barcodes
-    @purchases << {barcodes: barcodes, cost: calculate_cost(barcodes)}
+    @purchases << {time: Time.now, barcodes: barcodes, cost: calculate_cost(barcodes)}
     print_receipt(barcodes)
   end
 
@@ -42,7 +42,7 @@ class Store
       ["Time","Number of Products","Cost"]
     ]
     @purchases.each do |purchase|
-      summary << ["17/07/2015", purchase[:barcodes].size, purchase[:cost]]
+      summary << [purchase[:time].strftime("%d/%m/%Y"), purchase[:barcodes].size, purchase[:cost]]
     end
     summary
   end

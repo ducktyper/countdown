@@ -40,9 +40,10 @@ describe "store" do
 
   it "views purchase summary" do
     store.purchase(["0001"])
+    time = Time.now.strftime("%d/%m/%Y")
     expect = [
       ["Time","Number of Products","Cost"],
-      ["17/07/2015",1,5]
+      [time,1,5]
     ]
     assert_equal expect, store.purchase_summary
   end
