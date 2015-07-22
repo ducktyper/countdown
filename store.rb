@@ -17,6 +17,15 @@ class Purchase
     @barcodes = barcodes
     @cost = cost
   end
+
+  def display_time
+    @time.strftime("%d/%m/%Y")
+  end
+
+  def item_count
+    @barcodes.size
+  end
+
 end
 
 class Store
