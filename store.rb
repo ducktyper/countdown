@@ -9,11 +9,21 @@ class Product
 
 end
 
+class Purchase
+  attr_reader :time, :barcodes, :cost
+
+  def initialize barcodes, cost
+    @time = Time.now
+    @barcodes = barcodes
+    @cost = cost
+  end
+end
+
 class Store
 
   def initialize
     @products = {}
-    @purchases = []
+    @purchases_old = []
   end
 
   def add_product barcode, name, cost
@@ -33,7 +43,7 @@ class Store
   end
 
   def purchase barcodes
-    @purchases << {time: Time.now, barcodes: barcodes, cost: calculate_cost(barcodes)}
+    @purchases_old << {time: Time.now, barcodes: barcodes, cost: calculate_cost(barcodes)}
     print_receipt(barcodes)
   end
 
@@ -41,7 +51,7 @@ class Store
     summary = [
       ["Time","Number of Products","Cost"]
     ]
-    @purchases.each do |p|
+    @purchases_old.each do |p|
       summary << [p[:time].strftime("%d/%m/%Y"), p[:barcodes].size, p[:cost]]
     end
     summary
