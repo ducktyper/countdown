@@ -36,7 +36,7 @@ class Discount
     @amount = amount
   end
 
-  def print product
+  def print
     "#{product.name} -$#{"%.2f" % amount}\n"
   end
 
@@ -46,7 +46,7 @@ class NoDiscount
   def amount
     0
   end
-  def print product
+  def print
     ""
   end
 end
@@ -100,7 +100,7 @@ class Store
 
   def print_discount barcodes
     barcodes.inject("") do |receipt, barcode|
-      receipt + @discounts[barcode].print(@products[barcode])
+      receipt + @discounts[barcode].print
     end
   end
 
