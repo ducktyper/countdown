@@ -2,12 +2,12 @@ require 'minitest/autorun'
 require './store'
 
 describe "store" do
-  let(:store) {
+  let(:store) do
     store = Store.new()
     store.add_product("0001", "apple", 5)
     store.add_product("0002", "orange", 10)
     store
-  }
+  end
 
   it "adds product" do
     assert_equal(2, store.product_count())
