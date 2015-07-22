@@ -1,5 +1,8 @@
 require 'minitest/autorun'
+require 'active_record'
 require './store'
+
+ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 
 describe "store" do
   let(:store) do
