@@ -14,11 +14,11 @@ class Product
 end
 
 class Purchase
-  attr_reader :time, :barcodes, :cost
+  attr_reader :time, :products, :cost
 
-  def initialize barcodes, cost
+  def initialize products, cost
     @time = Time.now
-    @barcodes = barcodes
+    @products = products
     @cost = cost
   end
 
@@ -27,7 +27,7 @@ class Purchase
   end
 
   def item_count
-    @barcodes.size
+    @products.size
   end
 
 end
@@ -82,7 +82,7 @@ class Store
   end
 
   def purchase barcodes
-    @purchases << Purchase.new(barcodes, calculate_cost(barcodes))
+    @purchases << Purchase.new(products_from(barcodes), calculate_cost(barcodes))
     print_receipt(barcodes)
   end
 
@@ -107,6 +107,10 @@ class Store
 
   def print_total barcodes
     "total $#{"%.2f" % calculate_cost(barcodes)}"
+  end
+
+  def products_from barcodes
+    barcodes.map {|b| product_from b}
   end
 
   def product_from barcode
