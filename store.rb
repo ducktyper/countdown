@@ -123,6 +123,6 @@ class Store
   end
 
   def discounts_from barcodes
-    @discounts.map {|d| @discounts[d]}
+    barcodes.map {|d| @discounts[d]}
   end
 end
