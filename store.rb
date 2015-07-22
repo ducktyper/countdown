@@ -100,11 +100,11 @@ class Store
 
   private
   def print_cost barcodes
-    barcodes.inject("") {|receipt, barcode| receipt + @products[barcode].print}
+    products_from(barcodes).map(&:print).join
   end
 
   def print_discount barcodes
-    barcodes.inject("") {|receipt, barcode| receipt + @discounts[barcode].print}
+    discounts_from(barcodes).map(&:print).join
   end
 
   def print_total barcodes
