@@ -16,7 +16,7 @@ end
 class Purchase
   attr_reader :time, :products, :discounts
 
-  def initialize products, cost, discounts
+  def initialize products, discounts
     @time = Time.now
     @products = products
     @discounts = discounts
@@ -77,9 +77,7 @@ class Store
   end
 
   def calculate_cost barcodes
-    barcodes.inject(0) do |total, barcode|
-      total + @products[barcode].cost - @discounts[barcode].amount
-    end
+    Purchase.new(products_from(barcodes), discounts_from(barcodes)).cost
   end
 
   def print_receipt barcodes
@@ -87,7 +85,7 @@ class Store
   end
 
   def purchase barcodes
-    @purchases << Purchase.new(products_from(barcodes), calculate_cost(barcodes), discounts_from(barcodes))
+    @purchases << Purchase.new(products_from(barcodes), discounts_from(barcodes))
     print_receipt(barcodes)
   end
 
