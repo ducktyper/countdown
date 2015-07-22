@@ -59,7 +59,7 @@ class Store
   end
 
   def print_receipt barcodes
-    print_cost(barcodes) + print_total(barcodes)
+    print_cost(barcodes) + print_discount(barcodes) + print_total(barcodes)
   end
 
   def purchase barcodes
@@ -82,6 +82,18 @@ class Store
     barcodes.inject("") do |receipt, barcode|
       product = @products[barcode]
       receipt + "#{product.name} $#{"%.2f" % product.cost}\n"
+    end
+  end
+
+  def print_discount barcodes
+    barcodes.inject("") do |receipt, barcode|
+      product  = @products[barcode]
+      discount = @discounts[barcode]
+      if discount
+        receipt + "#{product.name} -$#{"%.2f" % discount.amount}\n"
+      else
+        receipt
+      end
     end
   end
 

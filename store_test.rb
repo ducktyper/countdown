@@ -53,4 +53,10 @@ describe "store" do
     assert_equal 4, store.calculate_cost(["0001"])
   end
 
+  it "receipt includes discount" do
+    store.add_discount("0001", 1)
+    expect = "apple $5.00\napple -$1.00\ntotal $4.00"
+    assert_equal expect, store.purchase(["0001"])
+  end
+
 end
