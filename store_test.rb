@@ -10,13 +10,6 @@ describe "store" do
     assert_equal(2, store.product_count())
   end
 
-  it "adds multiple products" do
-    store = Store.new()
-    store.add_product("0001", "apple", 5)
-    store.add_product("0002", "orange", 10)
-    assert_equal(2, store.product_count())
-  end
-
   it "calculates cost" do
     store = Store.new()
     store.add_product("0001", "apple", 5)
