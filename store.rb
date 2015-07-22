@@ -13,6 +13,7 @@ class Store
 
   def initialize
     @products = {}
+    @purchases = []
   end
 
   def add_product barcode, name, cost
@@ -32,14 +33,18 @@ class Store
   end
 
   def purchase barcodes
+    @purchases << {barcodes: barcodes, cost: calculate_cost(barcodes)}
     print_receipt(barcodes)
   end
 
   def purchase_summary
-    [
-      ["Time","Number of Products","Cost"],
-      ["17/07/2015",1,10]
+    summary = [
+      ["Time","Number of Products","Cost"]
     ]
+    @purchases.each do |purchase|
+      summary << ["17/07/2015", purchase[:barcodes].size, purchase[:cost]]
+    end
+    summary
   end
 
   private
