@@ -19,6 +19,10 @@ describe "store" do
     store
   end
 
+  before(:each) do
+    Product.delete_all
+  end
+
   it "adds product" do
     assert_equal 2, store.product_count
   end

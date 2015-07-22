@@ -11,11 +11,13 @@ class Store
   end
 
   def add_product barcode, name, cost
+    Product.create(barcode: barcode, name: name, cost: cost)
     @products[barcode] = Product.new(barcode: barcode, name: name, cost: cost)
   end
 
   def product_count
     @products.size
+    Product.count
   end
 
   def calculate_cost barcodes
