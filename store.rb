@@ -36,11 +36,18 @@ class Discount
     @amount = amount
   end
 
+  def print product
+    "#{product.name} -$#{"%.2f" % amount}\n"
+  end
+
 end
 
 class NoDiscount
   def amount
     0
+  end
+  def print product
+    ""
   end
 end
 
@@ -100,6 +107,7 @@ class Store
       else
         receipt
       end
+      receipt + discount.print(product)
     end
   end
 
