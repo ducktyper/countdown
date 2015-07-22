@@ -7,6 +7,10 @@ class Product
     @cost    = cost
   end
 
+  def print
+    "#{name} $#{"%.2f" % cost}\n"
+  end
+
 end
 
 class Purchase
@@ -94,7 +98,7 @@ class Store
   def print_cost barcodes
     barcodes.inject("") do |receipt, barcode|
       product = @products[barcode]
-      receipt + "#{product.name} $#{"%.2f" % product.cost}\n"
+      receipt + product.print
     end
   end
 
