@@ -11,7 +11,7 @@ class Store
   end
 
   def add_product barcode, name, cost
-    @products[barcode] = Product.new(barcode, name, cost)
+    @products[barcode] = Product.new(barcode: barcode, name: name, cost: cost)
   end
 
   def product_count
