@@ -11,7 +11,7 @@ class Store
   end
 
   def add_product barcode, name, cost
-    Product.create(barcode: barcode, name: name, cost: cost)
+    Product.create_or_update(barcode: barcode, name: name, cost: cost)
     @products[barcode] = Product.new(barcode: barcode, name: name, cost: cost)
   end
 
@@ -55,6 +55,7 @@ class Store
 
   def product_from barcode
     @products[barcode]
+    Product.find_by barcode: barcode
   end
 
   def discounts_from barcodes
