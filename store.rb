@@ -1,55 +1,6 @@
 require './product'
-
-class Purchase
-  attr_reader :time, :products, :discounts
-
-  def initialize products, discounts
-    @time = Time.now
-    @products = products
-    @discounts = discounts
-  end
-
-  def display_time
-    @time.strftime("%d/%m/%Y")
-  end
-
-  def item_count
-    @products.size
-  end
-
-  def cost
-    products.map(&:cost).reduce(:+) - discounts.map(&:amount).reduce(:+)
-  end
-
-  def print_receipt
-    @products.map(&:print).join + @discounts.map(&:print).join +
-    "total $#{"%.2f" % cost}"
-  end
-
-end
-
-class Discount
-  attr_reader :product, :amount
-
-  def initialize product, amount
-    @product = product
-    @amount = amount
-  end
-
-  def print
-    "#{product.name} -$#{"%.2f" % amount}\n"
-  end
-
-end
-
-class NoDiscount
-  def amount
-    0
-  end
-  def print
-    ""
-  end
-end
+require './purchase'
+require './discount'
 
 class Store
 
