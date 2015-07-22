@@ -61,7 +61,7 @@ class Store
   end
 
   def calculate_cost barcodes
-    barcodes.inject(0) {|total, barcode| total + @products[barcode].cost - discount_cost(barcode)}
+    barcodes.inject(0) {|total, barcode| total + @products[barcode].cost - @discounts[barcode].amount}
   end
 
   def print_receipt barcodes
@@ -105,14 +105,6 @@ class Store
 
   def print_total barcodes
     "total $#{"%.2f" % calculate_cost(barcodes)}"
-  end
-
-  def discount_cost barcode
-    if (discount = @discounts[barcode])
-      discount.amount
-    else
-      0
-    end
   end
 
 end
