@@ -14,12 +14,12 @@ class Product
 end
 
 class Purchase
-  attr_reader :time, :products, :cost
+  attr_reader :time, :products, :discounts
 
-  def initialize products, cost
+  def initialize products, cost, discounts
     @time = Time.now
     @products = products
-    @cost = cost
+    @discounts = discounts
   end
 
   def display_time
@@ -28,6 +28,11 @@ class Purchase
 
   def item_count
     @products.size
+  end
+
+  def cost
+    products.inject(0) { |total, product| total + product.cost } -
+    discounts.inject(0) { |total, discount| total + discount.amount}
   end
 
 end
@@ -82,7 +87,7 @@ class Store
   end
 
   def purchase barcodes
-    @purchases << Purchase.new(products_from(barcodes), calculate_cost(barcodes))
+    @purchases << Purchase.new(products_from(barcodes), calculate_cost(barcodes), discounts_from(barcodes))
     print_receipt(barcodes)
   end
 
@@ -117,4 +122,7 @@ class Store
     @products[barcode]
   end
 
+  def discounts_from barcodes
+    @discounts.map {|d| @discounts[d]}
+  end
 end
