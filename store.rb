@@ -29,10 +29,10 @@ class Purchase
 end
 
 class Discount
-  attr_reader :barcode, :amount
+  attr_reader :product, :amount
 
-  def initialize barcode, amount
-    @barcode = barcode
+  def initialize product, amount
+    @product = product
     @amount = amount
   end
 
@@ -87,7 +87,7 @@ class Store
   end
 
   def add_discount barcode, amount
-    @discounts[barcode] = Discount.new(barcode, amount)
+    @discounts[barcode] = Discount.new(product_from(barcode), amount)
   end
 
   private
@@ -106,6 +106,10 @@ class Store
 
   def print_total barcodes
     "total $#{"%.2f" % calculate_cost(barcodes)}"
+  end
+
+  def product_from barcode
+    @products[barcode]
   end
 
 end
