@@ -28,11 +28,22 @@ class Purchase
 
 end
 
+class Discount
+  attr_reader :barcode, :amount
+
+  def initialize barcode, amount
+    @barcode = barcode
+    @amount = amount
+  end
+
+end
+
 class Store
 
   def initialize
     @products = {}
     @purchases = []
+    @discounts = {}
   end
 
   def add_product barcode, name, cost
@@ -44,7 +55,7 @@ class Store
   end
 
   def calculate_cost barcodes
-    barcodes.inject(0) {|total, barcode| total + @products[barcode].cost}
+    barcodes.inject(0) {|total, barcode| total + @products[barcode].cost - discount_cost(barcode)}
   end
 
   def print_receipt barcodes
@@ -62,6 +73,10 @@ class Store
     summary
   end
 
+  def add_discount barcode, amount
+    @discounts[barcode] = Discount.new(barcode, amount)
+  end
+
   private
   def print_cost barcodes
     barcodes.inject("") do |receipt, barcode|
@@ -72,6 +87,14 @@ class Store
 
   def print_total barcodes
     "total $#{"%.2f" % calculate_cost(barcodes)}"
+  end
+
+  def discount_cost barcode
+    if (discount = @discounts[barcode])
+      discount.amount
+    else
+      0
+    end
   end
 
 end

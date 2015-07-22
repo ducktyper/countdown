@@ -48,4 +48,9 @@ describe "store" do
     assert_equal expect, store.purchase_summary
   end
 
+  it "add discount" do
+    store.add_discount("0001", 1)
+    assert_equal 4, store.calculate_cost(["0001"])
+  end
+
 end
