@@ -1,15 +1,9 @@
-class Discount
-  attr_reader :product, :amount
-
-  def initialize product, amount
-    @product = product
-    @amount = amount
-  end
+class Discount < ActiveRecord::Base
+  belongs_to :product
 
   def print
     "#{product.name} -$#{"%.2f" % amount}\n"
   end
-
 end
 
 class NoDiscount

@@ -38,7 +38,7 @@ class Store
   end
 
   def add_discount barcode, amount
-    @discounts[barcode] = Discount.new(product_from(barcode), amount)
+    @discounts[barcode] = Discount.new(product: product_from(barcode), amount: amount)
   end
 
   def delete_discount barcode
