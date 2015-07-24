@@ -38,10 +38,12 @@ class Store
   end
 
   def add_discount barcode, amount
+    Discount.create_or_update(product: product_from(barcode), amount: amount)
     @discounts[barcode] = Discount.new(product: product_from(barcode), amount: amount)
   end
 
   def delete_discount barcode
+    Discount.where(product: product_from(barcode)).delete_all
     @discounts.delete barcode
   end
 
@@ -55,7 +57,7 @@ class Store
   end
 
   def discounts_from barcodes
-    barcodes.map {|d| @discounts[d]}
+    barcodes.map {|b| Discount.safe_find_by(product: product_from(b))}
   end
 
   def purchase_from barcodes
