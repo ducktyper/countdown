@@ -1,7 +1,7 @@
 class Purchase < ActiveRecord::Base
   has_and_belongs_to_many :products
   has_and_belongs_to_many :discounts
-  before_create :set_time
+  before_create :set_purchased_at
 
   def self.new_from barcodes
     new(products:  Product.map_by(barcodes),
@@ -9,7 +9,7 @@ class Purchase < ActiveRecord::Base
   end
 
   def display_time
-    time.utc.strftime("%d/%m/%Y")
+    purchased_at.utc.strftime("%d/%m/%Y")
   end
 
   def item_count
@@ -26,8 +26,8 @@ class Purchase < ActiveRecord::Base
   end
 
   private
-  def set_time
-    self.time = Time.now.utc
+  def set_purchased_at
+    self.purchased_at = Time.now.utc
   end
 
 end

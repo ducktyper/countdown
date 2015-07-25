@@ -15,7 +15,7 @@ ActiveRecord::Schema.define do
   create_table "purchases" do |t|
     t.integer  "product_id",    limit: 4
     t.decimal  "amount",        precision: 8, scale: 2
-    t.datetime "time"
+    t.datetime "purchased_at"
   end
   create_table "products_purchases", id: false do |t|
     t.integer  "product_id",    limit: 4
