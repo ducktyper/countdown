@@ -9,7 +9,7 @@ class Purchase < ActiveRecord::Base
   end
 
   def display_time
-    purchased_at.strftime("%d/%m/%Y")
+    purchased_at.strftime("%d/%m/%Y %H:%M:%S")
   end
 
   def item_count
