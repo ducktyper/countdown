@@ -1,7 +1,7 @@
 class Purchase < ActiveRecord::Base
   has_and_belongs_to_many :products
   has_and_belongs_to_many :discounts
-  after_initialize :set_time
+  before_create :set_time
 
   def self.new_from barcodes
     new(products:  Product.map_by(barcodes),
