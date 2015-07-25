@@ -9,20 +9,7 @@ class Discount < ActiveRecord::Base
     end
   end
 
-  def self.safe_find_by args
-    find_by(args) || NoDiscount.new
-  end
-
   def print
     "#{product.name} -$#{"%.2f" % amount}\n"
-  end
-end
-
-class NoDiscount
-  def amount
-    0
-  end
-  def print
-    ""
   end
 end
