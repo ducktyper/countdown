@@ -6,7 +6,6 @@ class Store
 
   def initialize
     @purchases = []
-    @discounts = Hash.new(NoDiscount.new)
   end
 
   def add_product barcode, name, cost
@@ -39,12 +38,10 @@ class Store
 
   def add_discount barcode, amount
     Discount.create_or_update(product: product_from(barcode), amount: amount)
-    @discounts[barcode] = Discount.new(product: product_from(barcode), amount: amount)
   end
 
   def delete_discount barcode
     Discount.where(product: product_from(barcode)).delete_all
-    @discounts.delete barcode
   end
 
   private
