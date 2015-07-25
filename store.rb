@@ -21,9 +21,7 @@ class Store
   end
 
   def purchase barcodes
-    purchase = Purchase.new_from(barcodes)
-    purchase.save
-    purchase.print_receipt
+    Purchase.new_from(barcodes).tap(&:save).print_receipt
   end
 
   def purchase_summary
@@ -33,16 +31,12 @@ class Store
   end
 
   def add_discount barcode, amount
-    Discount.create_or_update(product: product_from(barcode), amount: amount)
+    product = Product.find_by(barcode: barcode)
+    Discount.create_or_update(product: product, amount: amount)
   end
 
   def delete_discount barcode
-    Discount.where(product: product_from(barcode)).delete_all
-  end
-
-  private
-  def product_from barcode
-    Product.find_by barcode: barcode
+    Discount.joins(:product).where(products: {barcode: barcode}).delete_all
   end
 
 end
