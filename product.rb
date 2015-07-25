@@ -2,8 +2,8 @@ class Product < ActiveRecord::Base
   has_one :discount
 
   def self.create_or_update args
-    if (p = find_by(args.slice :barcode))
-      p.update args.except(:barcode)
+    if (p = find_by(barcode: args[:barcode]))
+      p.update args
     else
       create args
     end
