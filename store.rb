@@ -13,15 +13,15 @@ class Store
   end
 
   def calculate_cost barcodes
-    purchase_from(barcodes).cost
+    Purchase.new_from(barcodes).cost
   end
 
   def print_receipt barcodes
-    purchase_from(barcodes).print_receipt
+    Purchase.new_from(barcodes).print_receipt
   end
 
   def purchase barcodes
-    purchase = purchase_from barcodes
+    purchase = Purchase.new_from(barcodes)
     purchase.save
     purchase.print_receipt
   end
@@ -41,19 +41,8 @@ class Store
   end
 
   private
-  def products_from barcodes
-    Product.map_by barcodes
-  end
-
   def product_from barcode
     Product.find_by barcode: barcode
   end
 
-  def existing_discounts_from barcodes
-    Discount.map_by(barcodes).compact
-  end
-
-  def purchase_from barcodes
-    Purchase.new(products: products_from(barcodes), discounts: existing_discounts_from(barcodes))
-  end
 end
