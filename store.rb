@@ -4,10 +4,6 @@ require './discount'
 
 class Store
 
-  def initialize
-    @purchases = []
-  end
-
   def add_product barcode, name, cost
     Product.create_or_update(barcode: barcode, name: name, cost: cost)
   end
@@ -27,13 +23,12 @@ class Store
   def purchase barcodes
     purchase = purchase_from barcodes
     purchase.save
-    @purchases << purchase
     purchase.print_receipt
   end
 
   def purchase_summary
     summary = [["Time","Number of Products","Cost"]]
-    @purchases.each {|p| summary << [p.display_time, p.item_count, p.cost.to_f]}
+    Purchase.all.each {|p| summary << [p.display_time, p.item_count, p.cost.to_f]}
     summary
   end
 
