@@ -31,8 +31,7 @@ class Store
   end
 
   def add_discount barcode, amount
-    product = Product.find_by(barcode: barcode)
-    Discount.create_or_update(product: product, amount: amount)
+    Product.find_by(barcode: barcode).set_discount(amount)
   end
 
   def delete_discount barcode
