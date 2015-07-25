@@ -13,6 +13,7 @@ describe "store" do
     Product.delete_all
     Discount.delete_all
     Purchase.delete_all
+    Time.zone = "Pacific/Auckland"
   end
 
   it "adds product" do
@@ -46,7 +47,7 @@ describe "store" do
 
   it "shows purchase summary" do
     store.purchase(["0001"])
-    time = Time.now.utc.strftime("%d/%m/%Y")
+    time = Time.zone.now.strftime("%d/%m/%Y")
     expect = [
       ["Time", "Number of Products", "Cost"],
       [time, 1, 5]
