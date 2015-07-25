@@ -42,7 +42,7 @@ class Store
 
   private
   def products_from barcodes
-    barcodes.map {|b| product_from b}
+    Product.map_by barcodes
   end
 
   def product_from barcode
@@ -50,7 +50,7 @@ class Store
   end
 
   def existing_discounts_from barcodes
-    barcodes.map {|b| Discount.find_by(product: product_from(b))}.compact
+    Discount.map_by(barcodes).compact
   end
 
   def purchase_from barcodes
