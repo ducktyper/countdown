@@ -46,7 +46,7 @@ describe "store" do
 
   it "shows purchase summary" do
     store.purchase(["0001"])
-    time = Time.now.strftime("%d/%m/%Y")
+    time = Time.now.utc.strftime("%d/%m/%Y")
     expect = [
       ["Time", "Number of Products", "Cost"],
       [time, 1, 5]

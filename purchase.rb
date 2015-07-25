@@ -9,7 +9,7 @@ class Purchase < ActiveRecord::Base
   end
 
   def display_time
-    time.strftime("%d/%m/%Y")
+    time.utc.strftime("%d/%m/%Y")
   end
 
   def item_count
@@ -27,7 +27,7 @@ class Purchase < ActiveRecord::Base
 
   private
   def set_time
-    self.time = Time.now
+    self.time = Time.now.utc
   end
 
 end
