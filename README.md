@@ -53,10 +53,11 @@ ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 [More info](https://github.com/rails/rails/blob/4-2-stable/activerecord/lib/active_record/schema.rb)
 ```ruby
 ActiveRecord::Schema.define do
-  # create cars table with 4 fields (actually 5 in total including id)
+  # create cars table with 5 fields (actually 6 in total including id)
   create_table "cars" do |t|
     t.string   "name",        limit: 255
     t.integer  "year",        limit: 4
+    t.integer  "owner_id",    limit: 4
     t.decimal  "price",       precision: 8, scale: 2
     t.datetime "purchased_at"
   end
@@ -66,7 +67,10 @@ ActiveRecord::Schema.define do
     t.integer  "product_id",    limit: 4
     t.integer  "purchase_id",   limit: 4
   end
-  create_table "drivers", id: false do |t|
+  create_table "drivers" do |t|
+    t.string   "name",        limit: 255
+  end
+  create_table "ownsers" do |t|
     t.string   "name",        limit: 255
   end
 end
@@ -76,9 +80,13 @@ end
 ```ruby
 class Car < ActiveRecord::Base
   has_and_belongs_to_many :drivers
+  belongs_to :owner
 end
-class Drivers < ActiveRecord::Base
+class Driver < ActiveRecord::Base
   has_and_belongs_to_many :cars
+end
+class Owner < ActiveRecord::Base
+  has_many :cars
 end
 ```
 Usage
@@ -89,7 +97,23 @@ Car.first.drivers # get drivers of the first car in the database through cars_dr
 ##### Find records
 [More info](http://guides.rubyonrails.org/active_record_querying.html)
 ```ruby
-Car.find(1)      # find car having id = 1
+# find a car having id = 1
+Car.find(1)
+# find a car having name = "A4"
+Car.find_by(name: "A4")
+# find cars having name = "A4"
+Car.where(name: "A4")
+Car.where("cars.name = ?", "A4")
+Car.where("cars.name = :name", name: "A4")
+# use relations
+Car.find(1).drivers
+Car.find(1).owner
+Owner.find(1).cars
+# find cars which owner's name = "bob"
+Car.joins(:owner).where(owners: {name: "bob"})
+# count records
+Car.count
+Car.where(name: "A4").count
 ```
 
 ### Task 2
