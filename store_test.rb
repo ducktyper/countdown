@@ -78,6 +78,14 @@ describe "store" do
     assert_equal 4, store.calculate_cost(["0001"])
   end
 
+  describe "invalid discount" do
+    [nil, 0, -1].each do |amount|
+      it "with amount(#{amount})" do
+        assert_raises {store.add_discount("0001", amount)}
+      end
+    end
+  end
+
   it "shows receipt with discount" do
     store.add_discount("0001", 1)
     expect = "apple $5.00\napple -$1.00\ntotal $4.00"

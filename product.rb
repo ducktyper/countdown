@@ -15,7 +15,9 @@ class Product < ActiveRecord::Base
   end
 
   def set_discount amount
-    (discount || build_discount).update(amount: amount)
+    unless (discount || build_discount).update(amount: amount)
+      raise "validation failed"
+    end
   end
 
   def print
