@@ -3,6 +3,30 @@ Goal: Teaching ruby to newbies
 
 We will build a self-checkout machine used in a supermarket together.
 
+### Task 3
+#### TODO
+Use ActiveRecord to persist data to SQLite
+#### Requirements
+* Install ActiveRecord and SQLite
+* Setup ActiveRecod to talk to SQLite memory storage
+* Define database tables to save products, discounts, and purchases
+* Extend Product, Discount, and Purchase classes to ActiveRecord::Base
+* Set relationships of each tables in models
+* purchase_summary shows hour:minute:second applying New Zealand Timezone
+```ruby
+store.purchase_summary() #=>
+[
+  ["Time","Number of Products","Cost"],
+  ["17/07/2015 00:00:00",2,20.0],
+  ["18/07/2015 00:00:00",1,15.99]
+]
+```
+* Raise an error if product and discount are not valid
+Product: barcode and name should exist and cost should be bigger than 0
+
+Discount: amount should be bigger than 0
+
+
 ### Task 2
 
 #### TODO
@@ -52,7 +76,6 @@ Time.now            #=> 2015-07-19 20:32:52 +1200
 Time.new(2015,7,19) #=> 2015-07-19 00:00:00 +1200
 Time.new(2015,7,19).strftime("%Y-%m-%d") #=> "2015-07-19"
 ```
-
 
 ### Task 1
 
