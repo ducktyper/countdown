@@ -1,6 +1,10 @@
 require 'minitest/autorun'
 require 'active_record'
 
+# Use travel_to
+require 'active_support/testing/time_helpers'
+include ActiveSupport::Testing::TimeHelpers
+
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 ActiveRecord::Schema.define do
   create_table "products" do |t|

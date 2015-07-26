@@ -14,6 +14,7 @@ describe "store" do
     Discount.delete_all
     Purchase.delete_all
     Time.zone = "Pacific/Auckland"
+    Time.zone = "Asia/Seoul"
   end
 
   it "adds product" do
@@ -46,13 +47,15 @@ describe "store" do
   end
 
   it "shows purchase summary" do
-    store.purchase(["0001"])
-    time = Time.zone.now.strftime("%d/%m/%Y %H:%M:%S")
+    time = "01/01/2001 00:00:00"
     expect = [
       ["Time", "Number of Products", "Cost"],
       [time, 1, 5]
     ]
-    assert_equal expect, store.purchase_summary
+    travel_to Time.zone.parse(time) do
+      store.purchase(["0001"])
+      assert_equal expect, store.purchase_summary
+    end
   end
 
   it "adds discount" do
