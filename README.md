@@ -28,7 +28,7 @@ Discount: amount should be bigger than 0
 
 #### ActiveRecord syntax
 ##### setup
-Tell ruby which gems (libries) to use (activerecord and sqlite3 gems in this case)
+Tell ruby which gems (libraries) to use (activerecord and sqlite3 gems in this case)
 ```ruby
 # create ./Gemfile to top folder and type below
 source 'https://rubygems.org'
