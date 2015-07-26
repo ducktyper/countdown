@@ -2,6 +2,7 @@ require 'active_record'
 
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 ActiveRecord::Schema.verbose = false
+ActiveRecord::Base.time_zone_aware_attributes = true
 ActiveRecord::Schema.define do
 
   create_table "products" do |t|
@@ -16,8 +17,6 @@ ActiveRecord::Schema.define do
   end
 
   create_table "purchases" do |t|
-    t.integer  "product_id",    limit: 4
-    t.decimal  "amount",        precision: 8, scale: 2
     t.datetime "purchased_at"
   end
 
