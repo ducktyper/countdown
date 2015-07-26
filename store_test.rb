@@ -20,19 +20,17 @@ describe "store" do
     assert_equal 2, store.product_count
   end
 
-  describe "invalid product" do
-    [
-      [nil, "", 10],
-      [" ", "snack", 10],
-      ["0003", nil, 10],
-      ["0003", "", 10],
-      ["0003", "snack", nil],
-      ["0003", "snack", 0],
-      ["0003", "snack", -10],
-    ].each do |barcode, name, cost|
-      it "with barcode(#{barcode}), name(#{name}), and cost(#{cost})" do
-        assert_raises {store.add_product(barcode, name, cost)}
-      end
+  [
+    [nil, "", 10],
+    [" ", "snack", 10],
+    ["0003", nil, 10],
+    ["0003", "", 10],
+    ["0003", "snack", nil],
+    ["0003", "snack", 0],
+    ["0003", "snack", -10],
+  ].each do |barcode, name, cost|
+    it "invalid product with barcode(#{barcode}), name(#{name}), and cost(#{cost})" do
+      assert_raises {store.add_product(barcode, name, cost)}
     end
   end
 
@@ -78,11 +76,9 @@ describe "store" do
     assert_equal 4, store.calculate_cost(["0001"])
   end
 
-  describe "invalid discount" do
-    [nil, 0, -1].each do |amount|
-      it "with amount(#{amount})" do
-        assert_raises {store.add_discount("0001", amount)}
-      end
+  [nil, 0, -1].each do |amount|
+    it "invalid discount with amount(#{amount})" do
+      assert_raises {store.add_discount("0001", amount)}
     end
   end
 
