@@ -26,6 +26,71 @@ Product: barcode and name should exist and cost should be bigger than 0
 
 Discount: amount should be bigger than 0
 
+#### ActiveRecord syntax
+##### setup
+Tell ruby which gems (libries) to use (activerecord and sqlite3 gems in this case)
+```ruby
+# create ./Gemfile to top folder and type below
+source 'https://rubygems.org'
+
+gem 'sqlite3', '1.3.10'
+gem 'activerecord', '4.2.0'
+```
+install gems
+```ruby
+# type this command on the top folder in termimal
+bundle install
+```
+load active_record gem to use
+```ruby
+require 'active_record'
+```
+setup connection to SQLite memory storage
+```ruby
+ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
+```
+##### Create database tables
+[More info](https://github.com/rails/rails/blob/4-2-stable/activerecord/lib/active_record/schema.rb)
+```ruby
+ActiveRecord::Schema.define do
+  # create cars table with 4 fields (actually 5 in total including id)
+  create_table "cars" do |t|
+    t.string   "name",        limit: 255
+    t.integer  "year",        limit: 4
+    t.decimal  "price",       precision: 8, scale: 2
+    t.datetime "purchased_at"
+  end
+  # create table connect cars and drivers in many to many relationship
+  # set {id: false} if no need direct access to this table
+  create_table "cars_drivers", id: false do |t|
+    t.integer  "product_id",    limit: 4
+    t.integer  "purchase_id",   limit: 4
+  end
+  create_table "drivers", id: false do |t|
+    t.string   "name",        limit: 255
+  end
+end
+```
+##### Create Class to represent each table and setup relations
+[More info](http://guides.rubyonrails.org/association_basics.html)
+```ruby
+class Car < ActiveRecord::Base
+  has_and_belongs_to_many :drivers
+end
+class Drivers < ActiveRecord::Base
+  has_and_belongs_to_many :cars
+end
+```
+Usage
+```ruby
+Car.first.drivers # get drivers of the first car in the database through cars_drivers table
+```
+
+##### Find records
+[More info](http://guides.rubyonrails.org/active_record_querying.html)
+```ruby
+Car.find(1)      # find car having id = 1
+```
 
 ### Task 2
 
