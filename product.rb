@@ -2,11 +2,7 @@ class Product < ActiveRecord::Base
   has_one :discount
 
   def self.create_or_update args
-    if (p = find_by(barcode: args[:barcode]))
-      p.update args
-    else
-      create args
-    end
+    find_or_initialize_by(barcode: args[:barcode]).update(args)
   end
 
   def self.map_by barcodes
@@ -14,11 +10,7 @@ class Product < ActiveRecord::Base
   end
 
   def set_discount amount
-    if discount
-      discount.update(amount: amount)
-    else
-      create_discount(amount: amount)
-    end
+    (discount || build_discount).update(amount: amount)
   end
 
   def print

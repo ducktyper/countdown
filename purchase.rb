@@ -17,7 +17,7 @@ class Purchase < ActiveRecord::Base
   end
 
   def cost
-    products.map(&:cost).reduce(:+) - (discounts.map(&:amount).reduce(:+) || 0)
+    products.map(&:cost).sum - discounts.map(&:amount).sum
   end
 
   def print_receipt
