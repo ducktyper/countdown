@@ -6,6 +6,6 @@ class Discount < ActiveRecord::Base
   end
 
   def print
-    "#{product.name} -$#{"%.2f" % amount}\n"
+    "#{product.name} -$%.2f\n" % amount
   end
 end

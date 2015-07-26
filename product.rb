@@ -22,7 +22,7 @@ class Product < ActiveRecord::Base
   end
 
   def print
-    "#{name} $#{"%.2f" % cost}\n"
+    "#{name} $%.2f\n" % cost
   end
 
 end

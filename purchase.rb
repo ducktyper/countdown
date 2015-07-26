@@ -22,7 +22,7 @@ class Purchase < ActiveRecord::Base
 
   def print_receipt
     products.map(&:print).join + discounts.map(&:print).join +
-    "total $#{"%.2f" % cost}"
+    "total $%.2f" % cost
   end
 
   private
