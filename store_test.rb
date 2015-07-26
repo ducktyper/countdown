@@ -14,7 +14,6 @@ describe "store" do
     Discount.delete_all
     Purchase.delete_all
     Time.zone = "Pacific/Auckland"
-    Time.zone = "Asia/Seoul"
   end
 
   it "adds product" do
