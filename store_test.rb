@@ -20,6 +20,22 @@ describe "store" do
     assert_equal 2, store.product_count
   end
 
+  describe "product validation" do
+    it "with blank barcode" do
+      assert_raises {store.add_product(nil, "", 10)}
+      assert_raises {store.add_product(" ", "snack", 10)}
+    end
+    it "with blank name" do
+      assert_raises {store.add_product("0003", nil, 10)}
+      assert_raises {store.add_product("0003", "", 10)}
+    end
+    it "with 0 or nagative cost" do
+      assert_raises {store.add_product("0003", "snack", nil)}
+      assert_raises {store.add_product("0003", "snack", 0)}
+      assert_raises {store.add_product("0003", "snack", -10)}
+    end
+  end
+
   it "calculates cost" do
     assert_equal 5, store.calculate_cost(["0001"])
   end
