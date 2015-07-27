@@ -22,6 +22,7 @@ store.purchase_summary() #=>
 ]
 ```
 * Raise an error if product and discount are not valid
+
 Product: barcode and name should exist and cost should be bigger than 0
 
 Discount: amount should be bigger than 0
@@ -114,6 +115,31 @@ Car.joins(:owner).where(owners: {name: "bob"})
 # count records
 Car.count
 Car.where(name: "A4").count
+```
+
+##### Time zone in Rails
+[More info](http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html)
+ActiveRecord saves time data to database as UTC (+0 hours). Time zone is required when
+we display data to the end user. Once you set time zone, time.zone methods
+(example: Time.zone.now) and active record's time data methods return the time
+with that time zone.
+
+Even you set Time.zone, ruby time methods like Time.now (without 'zone') will
+return the time with time zone set in your OS.
+
+
+Use time zone to ActiveRecord (aleady set in Rails)
+```ruby
+ActiveRecord::Base.time_zone_aware_attributes = true
+```
+Set time zone
+```ruby
+Time.zone = "Pacific/Auckland"
+```
+Useage
+```ruby
+Time.zone.now          # Mon, 27 Jul 2015 19:00:19 NZST +12:00
+Car.first.purchased_at # Mon, 27 Jul 2015 19:00:19 NZST +12:00
 ```
 
 ### Task 2
