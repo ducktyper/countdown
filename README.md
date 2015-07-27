@@ -5,6 +5,10 @@ We will build a self-checkout machine used in a supermarket together.
 
 ### Task 3
 #### TODO
+Checkout to the start point of the Task 3
+```ruby
+git checkout task3
+```
 Use ActiveRecord to persist data to SQLite
 #### Requirements
 * Install ActiveRecord and SQLite
@@ -119,10 +123,11 @@ Car.where(name: "A4").count
 
 ##### Time zone in Rails
 [More info](http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html)
+
 ActiveRecord saves time data to database as UTC (+0 hours). Time zone is required when
 we display data to the end user. Once you set time zone, time.zone methods
-(example: Time.zone.now) and active record's time data methods return the time
-with that time zone.
+(example: Time.zone.now) and active record's time data methods
+(example: Car.first.purchased_at) return the time with that time zone.
 
 Even you set Time.zone, ruby time methods like Time.now (without 'zone') will
 return the time with time zone set in your OS.
