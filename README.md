@@ -5,7 +5,7 @@ We will build a self-checkout machine used in a supermarket together.
 
 ### Task 3
 #### TODO
-Checkout to the start point of the Task 3
+Checkout to the start point of Task 3
 ```ruby
 git checkout task3
 ```
@@ -119,6 +119,26 @@ Car.joins(:owner).where(owners: {name: "bob"})
 # count records
 Car.count
 Car.where(name: "A4").count
+```
+
+##### Validation
+[More info](http://guides.rubyonrails.org/active_record_validations.html)
+
+set validation
+```ruby
+class Car < ActiveRecord::Base
+  validates :name,  presence: true # name should exist
+  validates :price, numericality: {greater_than: 0}
+end
+```
+check validation
+```ruby
+Car.new(name: "", price: 0).valid? #=> false
+```
+validation is also called in save and update methods
+```ruby
+Car.new(name: "", price: 0).save     #=> false
+Car.first.update(name: "", price: 0) #=> false
 ```
 
 ##### Time zone in Rails
