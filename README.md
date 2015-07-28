@@ -70,7 +70,7 @@ ActiveRecord::Schema.define do
   # set {id: false} if no need direct access to this table
   create_table "cars_drivers", id: false do |t|
     t.integer  "car_id",      limit: 4
-    t.integer  "diver_id",    limit: 4
+    t.integer  "driver_id",   limit: 4
   end
   create_table "drivers" do |t|
     t.string   "name",        limit: 255
