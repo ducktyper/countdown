@@ -386,7 +386,7 @@ array = []
 * add item to array
 ```ruby
 array = []
-array << "mlik"
+array << "milk"
 ```
 
 * get item by index
