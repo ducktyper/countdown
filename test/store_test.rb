@@ -1,4 +1,4 @@
-require './test_helper'
+require './test/test_helper'
 require './store'
 
 describe "store" do
@@ -29,7 +29,7 @@ describe "store" do
     ["0003", "snack", -10],
   ].each do |barcode, name, cost|
     it "invalid product with barcode(#{barcode}), name(#{name}), and cost(#{cost})" do
-      assert_raises {store.add_product(barcode, name, cost)}
+      assert_raises(RuntimeError) {store.add_product(barcode, name, cost)}
     end
   end
 
@@ -77,7 +77,7 @@ describe "store" do
 
   [nil, 0, -1].each do |amount|
     it "invalid discount with amount(#{amount})" do
-      assert_raises {store.add_discount("0001", amount)}
+      assert_raises(RuntimeError) {store.add_discount("0001", amount)}
     end
   end
 
