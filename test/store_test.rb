@@ -1,5 +1,5 @@
-require './test/test_helper'
-require './store'
+require 'test_helper'
+require 'store'
 
 describe "store" do
   let(:store) do

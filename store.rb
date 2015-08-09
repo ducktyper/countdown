@@ -1,6 +1,6 @@
-require './app/models/product'
-require './app/models/purchase'
-require './app/models/discount'
+require 'product'
+require 'purchase'
+require 'discount'
 
 class Store
 
