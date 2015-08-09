@@ -1,7 +1,7 @@
 # Add load paths
-$LOAD_PATH.unshift File.expand_path('../../', __FILE__)
-$LOAD_PATH.unshift File.expand_path('../../test', __FILE__)
-$LOAD_PATH.unshift File.expand_path('../../app/models', __FILE__)
+["", "test", "app/models"].each do |path|
+  $LOAD_PATH.unshift File.expand_path("../../#{path}", __FILE__)
+end
 
 require 'minitest/autorun'
 require 'db_helper'
