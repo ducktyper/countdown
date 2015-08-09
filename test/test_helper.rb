@@ -4,7 +4,7 @@
 end
 
 require 'minitest/autorun'
-require 'db_helper'
+require 'load_database'
 
 # Use travel_to
 require 'active_support/testing/time_helpers'
