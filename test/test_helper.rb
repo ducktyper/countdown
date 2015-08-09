@@ -1,9 +1,5 @@
-# Add load paths
-["", "test", "app/models"].each do |path|
-  $LOAD_PATH.unshift File.expand_path("../../#{path}", __FILE__)
-end
-
 require 'minitest/autorun'
+require './load_path'
 require 'load_database'
 
 # Use travel_to
